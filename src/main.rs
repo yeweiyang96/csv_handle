@@ -251,8 +251,8 @@ fn to_csv_path<'a>(front:&'a String, behind: &'a [u8;3],root: &Path) ->Vec<[Path
     let mut count = 0;
     let root_path = PathBuf::from(root);
     let new_path = root_path.join(front);
-    if !fs::metadata().is_ok() {
-        fs::create_dir(new_path).unwrap();
+    if !fs::metadata(&new_path).is_ok() {
+        fs::create_dir(&new_path).unwrap();
     }
     for index in behind{
         if index != &0 {
